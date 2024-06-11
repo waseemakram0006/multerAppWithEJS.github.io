@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <style>
+        .user-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .user-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .user-card-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+        }
+
+        .edit-btn, .delete-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        } 
+
+        .edit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            margin-right: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+    <% users.forEach(user => { %>
+        <div class="user-card">
+            <div class="user-card-content">
+                <% if (user.profileImage) { %>
+                    <img src="<%= user.profileImage %>" alt="Profile Image">
+                <% } %>
+                <div class="user-info">
+                    <p>ID: <%= user.id %></p>
+                    <p>Name: <%= user.name %></p>
+                    <p>Email: <%= user.email %></p>
+                    <p>Password: <%= user.password %></p>
+                    <p>Roll Number: <%= user.rollNumber %></p>
+                </div>
+            </div>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    <% }) %>
+</body>
+</html>
